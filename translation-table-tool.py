@@ -43,11 +43,12 @@ LANGS = {
         'sv': 'Swedish',
         }
 
-LINK = 'https://l10n.opensuse.org/widgets/%(project)s/%(lang)s/status-badge.png'
+LINK = '[https://l10n.opensuse.org/engage/%(project)s/%(lang)s https://l10n.opensuse.org/widgets/%(project)s/%(lang)s/status-badge.png]'
 
 PROJECTS = {
         'download-o-o' : 'Download Page',
         'landing-page' : 'Web Site',
+        'searchpage' : 'Search Page',
         'libzypp' : 'libzypp',
         'release-notes-openSUSE' : 'Release Notes',
         'skelcd-openSUSE' : 'License',
