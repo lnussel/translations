@@ -25,35 +25,82 @@ import logging
 import cmdln
 
 LANGS = {
-        'ar': 'Arabic',
-        'pt_BR': 'Brazilian Portuguese',
-        'zh_CN': 'Chinese Simplified',
-        'zh_TW': 'Chinese Traditional',
-        'cs': 'Czech',
-        'nl': 'Dutch',
-        'fr': 'French',
-        'de': 'German',
-        'hu': 'Hungarian',
-        'it': 'Italian',
-        'ja': 'Japanese',
-        'ko': 'Korean',
-        'pl': 'Polish',
-        'ru': 'Russian',
-        'es': 'Spanish',
-        'sv': 'Swedish',
+        # SLE main languages
+        'Arabic': 'ar',
+        'Brazilian Portugese': 'pt_BR',
+        'Chinese Simplified': 'zh_CN',
+        'Chinese Traditional': 'zh_TW',
+        'Czech': 'cs',
+        'Dutch': 'nl',
+        'French': 'fr',
+        'German': 'de',
+        'Hungarian': 'hu',
+        'Italian': 'it',
+        'Japanese': 'ja',
+        'Korean': 'ko',
+        'Polish': 'pl',
+        'Russian': 'ru',
+        'Spanish': 'es',
+        'Swedish': 'sv',
+        # strong openSUSE languages
+        'Catalan': 'ca',
+        'Greek' : 'el',
+        'Slovak': 'sk',
+        'Ukrainian': 'uk',
+        'Lithuanian': 'lt',
+        'Finnish': 'fi',
+        'Slovenian': 'sl',
+        'Estonian': 'et',
+        'Bosnian': 'bs',
         }
 
 LINK = '[https://l10n.opensuse.org/engage/%(project)s/%(lang)s https://l10n.opensuse.org/widgets/%(project)s/%(lang)s/status-badge.png]'
 
 PROJECTS = {
-        'download-o-o' : 'Download Page',
-        'landing-page' : 'Web Site',
-        'searchpage' : 'Search Page',
-        'libzypp' : 'libzypp',
-        'release-notes-openSUSE' : 'Release Notes',
-        'skelcd-openSUSE' : 'License',
-        'yast-slide-show' : 'Slide Show',
-        'zypper' : 'zypper',
+        'Infrastructure and Installation' : {
+            'download-o-o' : 'Download Page',
+            'landing-page' : 'Web Site',
+            'searchpage' : 'Search Page',
+            'release-notes-openSUSE' : 'Release Notes',
+            'skelcd-openSUSE' : 'License',
+            'yast-slide-show' : 'Slide Show',
+            },
+        'Software' : {
+            'libzypp' : 'libzypp',
+            'zypper' : 'zypper',
+            'snapper' : 'snapper',
+            },
+        'YaST (1)' : {
+            'yast-base': 'base',
+            'yast-country': 'country',
+            'yast-firewall': 'firewall',
+            'yast-installation': 'installation',
+            'yast-ncurses': 'ncurses',
+            'yast-ncurses-pkg': 'ncurses-pkg',
+            'yast-network': 'network',
+            'yast-pam': 'pam',
+            'yast-pkg-bindings': 'pkg-bindings',
+            'yast-qt': 'qt',
+            'yast-qt-pkg': 'qt-pkg',
+            'yast-timezone_db': 'timezone_db',
+            'yast-storage': 'storage',
+            },
+        'YaST (2)' : {
+            'yast-control-center': 'control-center',
+            'yast-oneclickinstall': 'oneclickinstall',
+            'yast-online-update': 'online-update',
+            'yast-online-update-configuration': 'online-update-configuration',
+            'yast-ldap': 'ldap',
+            'yast-mail': 'mail',
+            'yast-packager': 'packager',
+            'yast-security': 'security',
+            'yast-services-manager': 'services-manager',
+            'yast-snapper': 'snapper',
+            'yast-storage': 'storage',
+            'yast-update': 'update',
+            'yast-users': 'users',
+            'yast-sysconfig': 'sysconfig',
+            },
         }
 
 class TranslationTool(cmdln.Cmdln):
@@ -87,13 +134,15 @@ class TranslationTool(cmdln.Cmdln):
         ${cmd_option_list}
         """
 
-        print '{| class="wikitable"'
-        print '|-'
-        print '!- Language !!', ' !! '. join([PROJECTS[p] for p in sorted(PROJECTS.keys())])
-        for lang in sorted(LANGS.keys()):
+        for category in sorted(PROJECTS.keys()):
+            print '== %s ==' % category
+            print '{| class="wikitable"'
             print '|-'
-            print '| %s ||'%LANGS[lang], ' || '.join([LINK%{'project':p, 'lang':lang} for p in sorted(PROJECTS.keys())])
-        print '|}'
+            print '!- Language !!', ' !! '. join([PROJECTS[category][p] for p in sorted(PROJECTS[category].keys())])
+            for lang in sorted(LANGS.keys()):
+                print '|-'
+                print '| %s ||'%lang, ' || '.join([LINK%{'project':p, 'lang':LANGS[lang]} for p in sorted(PROJECTS[category].keys())])
+            print '|}'
 
 if __name__ == "__main__":
     app = TranslationTool()
