@@ -49,9 +49,6 @@ LANGS = {
         'Ukrainian': 'uk',
         'Lithuanian': 'lt',
         'Finnish': 'fi',
-        'Slovenian': 'sl',
-        'Estonian': 'et',
-        'Bosnian': 'bs',
         }
 
 LINK = '[https://l10n.opensuse.org/engage/%(project)s/%(lang)s https://l10n.opensuse.org/widgets/%(project)s/%(lang)s/status-badge.png]'
