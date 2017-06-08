@@ -23,6 +23,7 @@ from pprint import pprint
 import os, sys, re
 import logging
 import cmdln
+import json
 
 LANGS = {
         # SLE main languages
@@ -58,6 +59,7 @@ PROJECTS = {
             'download-o-o' : 'Download Page',
             'landing-page' : 'Web Site',
             'searchpage' : 'Search Page',
+            'software-o-o' : 'Software Page',
             'release-notes-openSUSE' : 'Release Notes',
             'skelcd-openSUSE' : 'License',
             'yast-slide-show' : 'Slide Show',
@@ -66,6 +68,7 @@ PROJECTS = {
             'libzypp' : 'libzypp',
             'zypper' : 'zypper',
             'snapper' : 'snapper',
+            'libstorage' : 'libstorage',
             },
         'YaST (1)' : {
             'yast-base': 'base',
@@ -90,6 +93,7 @@ PROJECTS = {
             'yast-ldap': 'ldap',
             'yast-mail': 'mail',
             'yast-packager': 'packager',
+            'yast-registration': 'registration',
             'yast-security': 'security',
             'yast-services-manager': 'services-manager',
             'yast-snapper': 'snapper',
