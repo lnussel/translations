@@ -60,9 +60,10 @@ PROJECTS = {
             'landing-page' : 'Web Site',
             'searchpage' : 'Search Page',
             'software-o-o' : 'Software Page',
-            'release-notes-openSUSE' : 'Release Notes',
-            'skelcd-openSUSE' : 'License',
+            'release-notes-opensuse' : 'Release Notes',
+            'skelcd-opensuse' : 'License',
             'yast-slide-show' : 'Slide Show',
+            'opensuse-eulas' : 'EULAs',
             },
         'Software' : {
             'libzypp' : 'libzypp',
@@ -72,6 +73,7 @@ PROJECTS = {
             },
         'YaST (1)' : {
             'yast-base': 'base',
+            'yast-control': 'control file',
             'yast-country': 'country',
             'yast-firewall': 'firewall',
             'yast-installation': 'installation',
@@ -139,7 +141,7 @@ class TranslationTool(cmdln.Cmdln):
             print '== %s ==' % category
             print '{| class="wikitable"'
             print '|-'
-            print '!- Language !!', ' !! '. join([PROJECTS[category][p] for p in sorted(PROJECTS[category].keys())])
+            print '! Language !!', ' !! '. join([PROJECTS[category][p] for p in sorted(PROJECTS[category].keys())])
             for lang in sorted(LANGS.keys()):
                 print '|-'
                 print '| %s ||'%lang, ' || '.join([LINK%{'project':p, 'lang':LANGS[lang]} for p in sorted(PROJECTS[category].keys())])
